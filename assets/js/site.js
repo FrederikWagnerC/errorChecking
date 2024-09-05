@@ -5,8 +5,9 @@
 myFunction()
 
 function myFunction(myData) {
-
-    console.log(myData);
+    if (myData) {
+        console.log(myData);
+    }
 
 
 }
@@ -14,13 +15,16 @@ function myFunction(myData) {
 
 
 // denne funktion skal checkes for modtagelse af en array
-myArrayFunction()
+myArrayFunction(123)
 
 function myArrayFunction(mydata) {
+    if (Array.isArray(mydata)) {
 
-    mydata.forEach(element => {
-        console.log(element);
-    });
+        mydata.forEach(element => {
+            console.log(element);
+        });
+
+    }
 }
 
 
@@ -34,6 +38,10 @@ function getData(myUrl) {
     fetch(myUrl)
         .then((response) => {
             console.log(response);
+            if(!response.ok) {
+                console.log(response.status +' '+ response.statusText);
+                
+            }
             return response.json();
         })
         .then((data) => {
